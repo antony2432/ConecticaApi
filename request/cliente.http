@@ -1,0 +1,60 @@
+@api = http://172.19.19.40:4010/clientes
+
+
+GET {{api}}
+
+
+###
+POST {{api}}
+Content-Type: application/json
+
+{
+  "dni": 72372882,
+  "nombre": "luis angel",
+  "apellido": "martinez estrada",
+  "celular": 949963582,
+  "usuario": "luis@martinez",
+  "distrito": "villa el salvador",
+  "direccion": "st 2 Gp 20 Mz l Lt 21",
+  "referencia": "Av Vallejo",
+  "correo": "luis@martinezestrada@gmail.com",
+  "tecnico": "Luis",
+  "fecha_de_instalacion": "5-10-2022",
+  "cintillo": 2460,
+  "plan": "100 MBPS",
+  "servicio": "Solo internet",
+  "caja_nat": "LV-001",
+  "router": "Huawei"
+}
+
+###
+GET {{api}}/1000
+
+###
+DELETE {{api}}/1003
+
+###
+GET {{api}}/count
+
+###
+PUT {{api}}/72372882
+Content-Type: application/json
+
+{
+  "dni": 72372882,
+  "nombre": "asdasdasd",
+  "apellido": "martinez estrada",
+  "celular": 949963582,
+  "usuario": "luis@martinez",
+  "distrito": "villa el salvador",
+  "direccion": "st 2 Gp 20 Mz l Lt 21",
+  "referencia": "Av Vallejo",
+  "correo": "luis@martinezestrada@gmail.com",
+  "tecnico": "Luis",
+  "fecha_de_instalacion": "5-10-2022",
+  "cintillo": 2460,
+  "plan": "100 MBPS",
+  "servicio": "Solo internet",
+  "caja_nat": "LV-001",
+  "router": "Huawei"
+}
