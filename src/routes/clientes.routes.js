@@ -6,8 +6,8 @@ const router = Router()
  router.get('/clientes', getClientes)
  router.post('/clientes', createNewClient)
  router.get('/clientes/count', getTotalClients)
- router.get('/clientes/:dni', getClientById)
+ router.get('/clientes/:id', getClientById)
  router.delete('/clientes/:id', deleteClientById)
- router.put('/clientes/:dni', UpdateClientByDni)
+ router.put('/clientes/:id', UpdateClientByDni)
 
  export default router

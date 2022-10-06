@@ -3,10 +3,10 @@ import config from "./config"
 import clientesRouter from "./routes/clientes.routes"
 
 //* cors
-// import cors from "cors"
+import cors from "cors"
 
 const app = express();
-// app.use(cors());
+app.use(cors());
 //* setting
 app.set('port', config.port)
 
