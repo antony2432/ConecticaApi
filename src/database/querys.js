@@ -4,5 +4,5 @@ export const queries = {
   getClientById: 'SELECT * FROM CLIENTE Where Id = @id',
   deleteClient: 'DELETE FROM [conecticaSac].[dbo].[CLIENTE] Where  Id = @id',
   getTotalClients: 'SELECT COUNT(*) FROM [conecticaSac].[dbo].[CLIENTE]',
-  updateClient: 'UPDATE CLIENTE SET Dni = @dni, Nombre = @nombre, Apellido = @apellido, Celular = @celular, Usuario = @usuario, Distrito = @distrito, Direccion = @direccion, Referencia = @referencia, Correo = @correo, Tecnico = @tecnico,  Fecha_de_instalacion = @fecha_de_instalacion, Cintillo = @cintillo, [Plan] = @Plan, Servicio = @servicio, Caja_nap = @caja_nap, [Sn] = @sn, Router = @router Where Id = @id '
+  updateClient: 'UPDATE CLIENTE SET Dni = @dni, Nombre = @nombre, Apellido = @apellido, Celular = @celular, Direccion = @direccion, Referencia = @referencia, Correo = @correo, Cintillo = @cintillo, [Plan] = @plan, Servicio = @servicio, Caja_nap = @caja_nap, [Sn] = @sn, Router = @router Where Id = @id '
 }

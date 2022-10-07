@@ -10,37 +10,7 @@ Content-Type: application/json
 
 {
   "dni": 12345678,
-  "nombre": " angel",
-  "apellido": "martinez estrada",
-  "celular": 949963582,
-  "usuario": "luis@martinez",
-  "distrito": "villa el salvador",
-  "direccion": "st 2 Gp 20 Mz l Lt 21",
-  "tecnico": "Luis",
-  "fecha_de_instalacion": "5-10-2022",
-  "plan": "100 MBPS",
-  "servicio": "Solo internet",
-  "caja_nat": "LV-001",
-  "sn": "asdasdjqwe",
-  "router": "Huawei"
-}
-
-###
-GET {{api}}/1004
-
-###
-DELETE {{api}}/1003
-
-###
-GET {{api}}/count
-
-###
-PUT {{api}}/1004
-Content-Type: application/json
-
-{
-  "dni": 72372882,
-  "nombre": "asdasdasd",
+  "nombre": "michi2",
   "apellido": "martinez estrada",
   "celular": 949963582,
   "usuario": "luis@martinez",
@@ -54,6 +24,35 @@ Content-Type: application/json
   "plan": "100 MBPS",
   "servicio": "Solo internet",
   "caja_nat": "LV-001",
-  "sn": "asdasdjqwe",
+  "sn": "asdasdasd",
   "router": "Huawei"
+}
+
+###
+GET {{api}}/1004
+
+###
+DELETE {{api}}/1003
+
+###
+GET {{api}}/count
+
+###
+PUT {{api}}/1001
+Content-Type: application/json
+
+{
+  "dni": 71262340,
+  "nombre": "DEGREGORY ANTONY",
+  "apellido": "CHUQUIVAL HUALLANCA",
+  "celular": 973331713,
+  "direccion": "MZ A1 LAS TORRES DE PAMPLONA",
+  "referencia": "CERCA DE LA OFICINA",
+  "correo": "luis@martinezestrada@gmail.com",
+  "cintillo": 2460,
+  "plan": "100 MBPS",
+  "servicio": "INTERNET FIBRA",
+  "caja_nap": "LMSJM002",
+  "sn": "asdasd123",
+  "router": "ZTE"
 }

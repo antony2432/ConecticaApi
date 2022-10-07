@@ -36,7 +36,7 @@ export const createNewClient = async (req, res) => {
       .input("referencia", sql.VarChar, referencia)
       .input("correo", sql.VarChar, correo)
       .input("tecnico", sql.VarChar, tecnico)
-      .input("fecha_de_instalacion", sql.VarChar, fecha_de_instalacion)
+      .input("fecha_de_instalacion", sql.Date, fecha_de_instalacion)
       .input("cintillo", sql.Int, cintillo)
       .input("plan", sql.VarChar, plan)
       .input("servicio", sql.VarChar, servicio)
@@ -94,9 +94,9 @@ export const getTotalClients = async (req, res) => {
 
 export const UpdateClientByDni = async (req, res) => {
   try {
-    const { dni, nombre, apellido, celular, usuario, distrito, direccion, referencia, correo, tecnico, fecha_de_instalacion, cintillo, plan, servicio, caja_nap, sn, router } = req.body
-    const { id } = req.params;
-    if (dni == null || nombre == null || apellido == null || celular == null || usuario == null || distrito == null || direccion == null || referencia == null || correo == null || tecnico == null || fecha_de_instalacion == null || cintillo == null || plan == null || servicio == null || caja_nap == null || sn == null || router == null) {
+    const { dni, nombre, apellido, celular, direccion, referencia, correo, cintillo, plan, servicio, caja_nap, sn, router } = req.body
+    let { id } = req.params;
+    if (dni == null || nombre == null || apellido == null || celular == null || direccion == null || referencia == null || correo == null || cintillo == null || plan == null || servicio == null || caja_nap == null || sn == null || router == null) {
       return res.status(400).json({ msg: 'Por favor envía los datos completos' });
     }
     const pool = await getConnection()
@@ -106,13 +106,9 @@ export const UpdateClientByDni = async (req, res) => {
       .input("nombre", sql.VarChar, nombre)
       .input("apellido", sql.VarChar, apellido)
       .input("celular", sql.Int, celular)
-      .input("usuario", sql.VarChar, usuario)
-      .input("distrito", sql.VarChar, distrito)
       .input('direccion', sql.VarChar, direccion)
       .input("referencia", sql.VarChar, referencia)
       .input("correo", sql.VarChar, correo)
-      .input("tecnico", sql.VarChar, tecnico)
-      .input("fecha_de_instalacion", sql.VarChar, fecha_de_instalacion)
       .input("cintillo", sql.Int, cintillo)
       .input("plan", sql.VarChar, plan)
       .input("servicio", sql.VarChar, servicio)
