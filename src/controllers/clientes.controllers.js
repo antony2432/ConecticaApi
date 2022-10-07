@@ -13,11 +13,16 @@ export const getClientes = async (req, res) => {
   }
 }
 export const createNewClient = async (req, res) => {
-  const { dni, nombre, apellido, celular, usuario, distrito, direccion, referencia, correo, tecnico, fecha_de_instalacion, cintillo, plan, servicio, caja_nat, router } = req.body
-  if (dni == null || nombre == null || apellido == null || celular == null || usuario == null || distrito == null || direccion == null || referencia == null || correo == null || tecnico == null || fecha_de_instalacion == null || cintillo == null || plan == null || servicio == null || caja_nat == null || router == null) {
-    return res.status(400).json({ msg: 'Por favor envía los datos completos' });
-  }
   try {
+    const { dni, nombre, apellido, celular, usuario, distrito, direccion, tecnico, fecha_de_instalacion, plan, servicio, sn, router } = req.body
+    let {referencia, cintillo, caja_nap, correo} = req.body
+    if (dni == null || nombre == null || apellido == null || celular == null || usuario == null || distrito == null || direccion == null || tecnico == null || fecha_de_instalacion == null || plan == null || servicio == null || sn == null || router == null) {
+      return res.status(400).json({ msg: 'Por favor envía los datos completos' });
+    }
+    if(referencia == "null")  referencia = null
+    if(cintillo == "null")  cintillo = null
+    if(caja_nap == "null")  caja_nap = null
+    if(correo == "null")  correo = null
     const pool = await getConnection()
     await pool
       .request()
@@ -35,7 +40,8 @@ export const createNewClient = async (req, res) => {
       .input("cintillo", sql.Int, cintillo)
       .input("plan", sql.VarChar, plan)
       .input("servicio", sql.VarChar, servicio)
-      .input("caja_nat", sql.VarChar, caja_nat)
+      .input("caja_nap", sql.VarChar, caja_nap)
+      .input("sn", sql.VarChar, sn)
       .input("router", sql.VarChar, router)
       .query(queries.addNewClient)
     res.json('Enviado');
@@ -74,25 +80,25 @@ export const deleteClientById = async (req, res) => {
   }
 }
 
-export const getTotalClients =  async (req, res) => {
+export const getTotalClients = async (req, res) => {
   try {
     const pool = await getConnection()
     const result = await pool
       .request()
       .query(queries.getTotalClients)
-      res.json(result.recordset[0]['']);
+    res.json(result.recordset[0]['']);
   } catch (error) {
     console.log(error)
   }
 }
 
 export const UpdateClientByDni = async (req, res) => {
-  const { dni, nombre, apellido, celular, usuario, distrito, direccion, referencia, correo, tecnico, fecha_de_instalacion, cintillo, plan, servicio, caja_nat, router } = req.body
-  const { id } = req.params;
-  if (dni == null || nombre == null || apellido == null || celular == null || usuario == null || distrito == null || direccion == null || referencia == null || correo == null || tecnico == null || fecha_de_instalacion == null || cintillo == null || plan == null || servicio == null || caja_nat == null || router == null) {
-    return res.status(400).json({ msg: 'Por favor envía los datos completos' });
-  }
   try {
+    const { dni, nombre, apellido, celular, usuario, distrito, direccion, referencia, correo, tecnico, fecha_de_instalacion, cintillo, plan, servicio, caja_nap, sn, router } = req.body
+    const { id } = req.params;
+    if (dni == null || nombre == null || apellido == null || celular == null || usuario == null || distrito == null || direccion == null || referencia == null || correo == null || tecnico == null || fecha_de_instalacion == null || cintillo == null || plan == null || servicio == null || caja_nap == null || sn == null || router == null) {
+      return res.status(400).json({ msg: 'Por favor envía los datos completos' });
+    }
     const pool = await getConnection()
     await pool
       .request()
@@ -110,7 +116,8 @@ export const UpdateClientByDni = async (req, res) => {
       .input("cintillo", sql.Int, cintillo)
       .input("plan", sql.VarChar, plan)
       .input("servicio", sql.VarChar, servicio)
-      .input("caja_nat", sql.VarChar, caja_nat)
+      .input("caja_nap", sql.VarChar, caja_nap)
+      .input("sn", sql.VarChar, sn)
       .input("router", sql.VarChar, router)
       .input("id", sql.Int, id)
       .query(queries.updateClient)

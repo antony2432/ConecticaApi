@@ -16,14 +16,12 @@ Content-Type: application/json
   "usuario": "luis@martinez",
   "distrito": "villa el salvador",
   "direccion": "st 2 Gp 20 Mz l Lt 21",
-  "referencia": "Av Vallejo",
-  "correo": "luis@martinezestrada@gmail.com",
   "tecnico": "Luis",
   "fecha_de_instalacion": "5-10-2022",
-  "cintillo": 2460,
   "plan": "100 MBPS",
   "servicio": "Solo internet",
   "caja_nat": "LV-001",
+  "sn": "asdasdjqwe",
   "router": "Huawei"
 }
 
@@ -56,5 +54,6 @@ Content-Type: application/json
   "plan": "100 MBPS",
   "servicio": "Solo internet",
   "caja_nat": "LV-001",
+  "sn": "asdasdjqwe",
   "router": "Huawei"
 }
