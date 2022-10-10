@@ -1,11 +1,9 @@
-import { Int } from "mssql";
 import { getConnection, sql, queries } from "../database";
 
 export const getClientes = async (req, res) => {
   try {
     const pool = await getConnection()
     const result = await pool.request().query(queries.getAllClients);
-    console.log(result)
     res.json(result.recordset);
   } catch (error) {
     res.status(500)
@@ -14,7 +12,7 @@ export const getClientes = async (req, res) => {
 }
 export const createNewClient = async (req, res) => {
   try {
-    const { dni, nombre, apellido, celular, usuario, distrito, direccion, tecnico, fecha_de_instalacion, plan, servicio, sn, router } = req.body
+    const { dni, nombre, apellido, celular, usuario, distrito, direccion, tecnico, fecha_de_instalacion, plan, servicio, sn, router, comentario } = req.body
     let {referencia, cintillo, caja_nap, correo} = req.body
     if (dni == null || nombre == null || apellido == null || celular == null || usuario == null || distrito == null || direccion == null || tecnico == null || fecha_de_instalacion == null || plan == null || servicio == null || sn == null || router == null) {
       return res.status(400).json({ msg: 'Por favor envía los datos completos' });
@@ -43,6 +41,7 @@ export const createNewClient = async (req, res) => {
       .input("caja_nap", sql.VarChar, caja_nap)
       .input("sn", sql.VarChar, sn)
       .input("router", sql.VarChar, router)
+      .input('comentario', sql.VarChar, comentario)
       .query(queries.addNewClient)
     res.json('Enviado');
   } catch (error) {
@@ -58,8 +57,21 @@ export const getClientById = async (req, res) => {
       .request()
       .input('id', id)
       .query(queries.getClientById)
-    console.log(resulti)
     res.send(resulti.recordset[0])
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const getClientByDni = async (req,res) => {
+  try {
+    const {dni} = req.params;
+    const pool = await getConnection()
+    const result = await pool
+      .request()
+      .input('dni', dni)
+      .query(queries.getClientByDni)
+      res.send(result.recordset)
   } catch (error) {
     console.log(error)
   }
@@ -92,9 +104,9 @@ export const getTotalClients = async (req, res) => {
   }
 }
 
-export const UpdateClientByDni = async (req, res) => {
+export const UpdateClientById = async (req, res) => {
   try {
-    const { dni, nombre, apellido, celular, direccion, referencia, correo, cintillo, plan, servicio, caja_nap, sn, router } = req.body
+    const { dni, nombre, apellido, celular, direccion, referencia, correo, cintillo, plan, servicio, caja_nap, sn, router, comentario } = req.body
     let { id } = req.params;
     if (dni == null || nombre == null || apellido == null || celular == null || direccion == null || referencia == null || correo == null || cintillo == null || plan == null || servicio == null || caja_nap == null || sn == null || router == null) {
       return res.status(400).json({ msg: 'Por favor envía los datos completos' });
@@ -115,6 +127,7 @@ export const UpdateClientByDni = async (req, res) => {
       .input("caja_nap", sql.VarChar, caja_nap)
       .input("sn", sql.VarChar, sn)
       .input("router", sql.VarChar, router)
+      .input("comentario", sql.VarChar, comentario)
       .input("id", sql.Int, id)
       .query(queries.updateClient)
     res.json('Actualizado');

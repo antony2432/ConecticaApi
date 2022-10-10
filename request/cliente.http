@@ -38,7 +38,7 @@ DELETE {{api}}/1003
 GET {{api}}/count
 
 ###
-PUT {{api}}/1001
+PUT {{api}}/1000
 Content-Type: application/json
 
 {
