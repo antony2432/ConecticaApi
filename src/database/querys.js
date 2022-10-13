@@ -5,5 +5,7 @@ export const queries = {
   deleteClient: 'DELETE FROM [conecticaSac].[dbo].[CLIENTE] Where  Id = @id',
   getTotalClients: 'SELECT COUNT(*) FROM [conecticaSac].[dbo].[CLIENTE]',
   updateClient: 'UPDATE CLIENTE SET Dni = @dni, Nombre = @nombre, Apellido = @apellido, Celular = @celular, Direccion = @direccion, Referencia = @referencia, Correo = @correo, Cintillo = @cintillo, [Plan] = @plan, Servicio = @servicio, Caja_nap = @caja_nap, [Sn] = @sn, Router = @router, [Comentario] = @comentario Where Id = @id ',
-  getClientByDni: 'SELECT * FROM CLIENTE Where Dni = @dni'
+  getClientByDni: 'SELECT * FROM CLIENTE Where Dni = @dni',
+  getTecnicoName: 'SELECT [Nombres], [Estado] FROM TECNICO',
+  getRouter: 'SELECT [Id], [Marca], [Estado] FROM ROUTER'
 }

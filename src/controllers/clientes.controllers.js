@@ -135,3 +135,23 @@ export const UpdateClientById = async (req, res) => {
     console.log(error)
   }
 }
+
+export const getTecnicoName = async (req, res) => {
+  try {
+    const pool = await getConnection()
+    const result = await pool.request().query(queries.getTecnicoName);
+    res.json(result.recordset);
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const getRouter = async (req, res)=> {
+  try {
+    const pool = await getConnection()
+    const result = await pool.request().query(queries.getRouter)
+    res.json(result.recordset)
+  } catch (error) {
+    console.log(error)
+  }
+}

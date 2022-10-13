@@ -1,5 +1,5 @@
 import { Router } from "express";
-import {getClientes, createNewClient, getClientById, deleteClientById, getTotalClients, UpdateClientById, getClientByDni} from "../controllers/clientes.controllers"
+import {getClientes, createNewClient, getClientById, deleteClientById, getTotalClients, UpdateClientById, getClientByDni, getTecnicoName, getRouter} from "../controllers/clientes.controllers"
 const router = Router()
 
 //* Rutas
@@ -10,5 +10,7 @@ const router = Router()
  router.delete('/clientes/:id', deleteClientById)
  router.put('/clientes/:id', UpdateClientById)
  router.get('/clientes/dni/:dni', getClientByDni)
+router.get('/tecnicoEstado', getTecnicoName)
+router.get('/router', getRouter)
 
  export default router
