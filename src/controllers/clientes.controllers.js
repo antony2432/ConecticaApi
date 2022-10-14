@@ -13,14 +13,14 @@ export const getClientes = async (req, res) => {
 export const createNewClient = async (req, res) => {
   try {
     const { dni, nombre, apellido, celular, usuario, distrito, direccion, tecnico, fecha_de_instalacion, plan, servicio, sn, router, comentario } = req.body
-    let {referencia, cintillo, caja_nap, correo} = req.body
+    let { referencia, cintillo, caja_nap, correo } = req.body
     if (dni == null || nombre == null || apellido == null || celular == null || usuario == null || distrito == null || direccion == null || tecnico == null || fecha_de_instalacion == null || plan == null || servicio == null || sn == null || router == null) {
       return res.status(400).json({ msg: 'Por favor envía los datos completos' });
     }
-    if(referencia == "null")  referencia = null
-    if(cintillo == "null")  cintillo = null
-    if(caja_nap == "null")  caja_nap = null
-    if(correo == "null")  correo = null
+    if (referencia == "null") referencia = null
+    if (cintillo == "null") cintillo = null
+    if (caja_nap == "null") caja_nap = null
+    if (correo == "null") correo = null
     const pool = await getConnection()
     await pool
       .request()
@@ -63,15 +63,15 @@ export const getClientById = async (req, res) => {
   }
 }
 
-export const getClientByDni = async (req,res) => {
+export const getClientByDni = async (req, res) => {
   try {
-    const {dni} = req.params;
+    const { dni } = req.params;
     const pool = await getConnection()
     const result = await pool
       .request()
       .input('dni', dni)
       .query(queries.getClientByDni)
-      res.send(result.recordset)
+    res.send(result.recordset)
   } catch (error) {
     console.log(error)
   }
@@ -146,11 +146,25 @@ export const getTecnicoName = async (req, res) => {
   }
 }
 
-export const getRouter = async (req, res)=> {
+export const getRouter = async (req, res) => {
   try {
     const pool = await getConnection()
     const result = await pool.request().query(queries.getRouter)
     res.json(result.recordset)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const getUserWhereDis = async (req, res) => {
+  try {
+    const { distrito } = req.params;
+    const pool = await getConnection()
+    const result = await pool
+      .request()
+      .input('distrito', distrito)
+      .query(queries.getUserWhereDis)
+    res.send(result.recordset)
   } catch (error) {
     console.log(error)
   }

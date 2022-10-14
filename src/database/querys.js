@@ -7,5 +7,6 @@ export const queries = {
   updateClient: 'UPDATE CLIENTE SET Dni = @dni, Nombre = @nombre, Apellido = @apellido, Celular = @celular, Direccion = @direccion, Referencia = @referencia, Correo = @correo, Cintillo = @cintillo, [Plan] = @plan, Servicio = @servicio, Caja_nap = @caja_nap, [Sn] = @sn, Router = @router, [Comentario] = @comentario Where Id = @id ',
   getClientByDni: 'SELECT * FROM CLIENTE Where Dni = @dni',
   getTecnicoName: 'SELECT [Nombres], [Estado] FROM TECNICO',
-  getRouter: 'SELECT [Id], [Marca], [Estado] FROM ROUTER'
+  getRouter: 'SELECT [Id], [Marca], [Estado] FROM ROUTER',
+  getUserWhereDis: 'SELECT [Usuario] FROM CLIENTE Where Distrito = @distrito'
 }
