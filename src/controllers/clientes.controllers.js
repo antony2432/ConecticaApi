@@ -169,3 +169,17 @@ export const getUserWhereDis = async (req, res) => {
     console.log(error)
   }
 }
+
+export const getClientByDistrito = async (req, res) => {
+  try {
+    const { distrito } = req.params;
+    const pool = await getConnection()
+    const resulti = await pool
+      .request()
+      .input('distrito', distrito)
+      .query(queries.getClientByDistrito)
+    res.send(resulti.recordset)
+  } catch (error) {
+    console.log(error)
+  }
+}
