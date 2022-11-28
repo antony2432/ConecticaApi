@@ -1,16 +1,16 @@
 export const queries = {
   getAllClients: 'SELECT * FROM CLIENTE',
-  addNewClient: 'INSERT INTO CLIENTE (Dni, Nombre, Apellido, Celular, Usuario, Distrito, Direccion, Referencia, Correo, Tecnico,  Fecha_de_instalacion, Cintillo, [Plan], Servicio, Caja_nap, [Sn], Router, [Comentario]) VALUES (@dni, @nombre, @apellido, @celular, @usuario, @distrito, @direccion, @referencia, @correo, @tecnico,  @fecha_de_instalacion, @cintillo, @plan, @servicio, @caja_nap, @sn, @router, @comentario)',
-  getClientById: 'SELECT * FROM CLIENTE Where Id = @id',
-  getClientByDistrito: 'SELECT * FROM CLIENTE Where Distrito = @distrito',
-  deleteClient: 'DELETE FROM [conecticaSac].[dbo].[CLIENTE] Where  Id = @id',
+  addNewClient: 'INSERT INTO CLIENTE (dni, nombre, apellido, celular, usuario, distrito, direccion, referencia, correo, tecnico,  fecha_de_instalacion, cintillo, [plan], servicio, cajaNap, [sn], router, [comentario]) VALUES (@dni, @nombre, @apellido, @celular, @usuario, @distrito, @direccion, @referencia, @correo, @tecnico,  @fecha_de_instalacion, @cintillo, @plan, @servicio, @cajaNap, @sn, @router, @comentario)',
+  getClientById: 'SELECT * FROM CLIENTE Where id = @id',
+  getClientByDistrito: 'SELECT * FROM CLIENTE Where distrito = @distrito',
+  deleteClient: 'DELETE FROM [conecticaSac].[dbo].[CLIENTE] Where  id = @id',
   getTotalClients: 'SELECT COUNT(*) FROM [conecticaSac].[dbo].[CLIENTE]',
-  updateClient: 'UPDATE CLIENTE SET Dni = @dni, Nombre = @nombre, Apellido = @apellido, Celular = @celular, Direccion = @direccion, Referencia = @referencia, Correo = @correo, Cintillo = @cintillo, [Plan] = @plan, Servicio = @servicio, Caja_nap = @caja_nap, [Sn] = @sn, Router = @router, [Comentario] = @comentario Where Id = @id ',
-  getClientByDni: 'SELECT * FROM CLIENTE Where Dni = @dni',
-  getTecnicoName: 'SELECT [Nombres], [Estado] FROM TECNICO',
-  getRouter: 'SELECT [Id], [Marca], [Estado] FROM ROUTER',
+  updateClient: 'UPDATE CLIENTE SET dni = @dni, nombre = @nombre, apellido = @apellido, celular = @celular, direccion = @direccion, referencia = @referencia, correo = @correo, cintillo = @cintillo, [plan] = @plan, servicio = @servicio, cajaNap = @cajaNap, [sn] = @sn, router = @router, [comentario] = @comentario Where id = @id ',
+  getClientByDni: 'SELECT * FROM CLIENTE Where dni = @dni',
+  getTecnicoName: 'SELECT [nombres], [estado] FROM TECNICO',
+  getRouter: 'SELECT [id], [marca], [estado] FROM ROUTER',
   getServicio: 'SELECT [id], [estado], [servicio] FROM SERVICIOS',
   getPlanes: 'SELECT [id], [plan], [estado] FROM PLANES',
   getDistrito: 'SELECT [id], [nombre], [estado] FROM DISTRITOS',
-  getUserWhereDis: 'SELECT [Usuario], [Dni] FROM CLIENTE Where Distrito = @distrito'
+  getUserWhereDis: 'SELECT [usuario], [dni] FROM CLIENTE Where distrito = @distrito'
 }

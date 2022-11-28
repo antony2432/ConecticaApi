@@ -13,13 +13,13 @@ export const getClientes = async (req, res) => {
 export const createNewClient = async (req, res) => {
   try {
     const { dni, nombre, apellido, celular, usuario, distrito, direccion, tecnico, fecha_de_instalacion, plan, servicio, sn, router, comentario } = req.body
-    let { referencia, cintillo, caja_nap, correo } = req.body
+    let { referencia, cintillo, cajaNap, correo } = req.body
     if (dni == null || nombre == null || apellido == null || celular == null || usuario == null || distrito == null || direccion == null || tecnico == null || fecha_de_instalacion == null || plan == null || servicio == null || sn == null || router == null) {
       return res.status(400).json({ msg: 'Por favor envía los datos completos' });
     }
     if (referencia == "null") referencia = null
     if (cintillo == "null") cintillo = null
-    if (caja_nap == "null") caja_nap = null
+    if (cajaNap == "null") cajaNap = null
     if (correo == "null") correo = null
     const pool = await getConnection()
     await pool
@@ -38,7 +38,7 @@ export const createNewClient = async (req, res) => {
       .input("cintillo", sql.Int, cintillo)
       .input("plan", sql.VarChar, plan)
       .input("servicio", sql.VarChar, servicio)
-      .input("caja_nap", sql.VarChar, caja_nap)
+      .input("cajaNap", sql.VarChar, cajaNap)
       .input("sn", sql.VarChar, sn)
       .input("router", sql.VarChar, router)
       .input('comentario', sql.VarChar, comentario)
