@@ -183,3 +183,33 @@ export const getClientByDistrito = async (req, res) => {
     console.log(error)
   }
 }
+
+export const getDistrito = async (req, res) => {
+  try {
+    const pool = await getConnection()
+    const result = await pool.request().query(queries.getDistrito)
+    res.json(result.recordset)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const getPlanes = async (req, res) => {
+  try {
+    const pool = await getConnection()
+    const result = await pool.request().query(queries.getPlanes)
+    res.json(result.recordset)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const getServicio = async (req, res) => {
+  try {
+    const pool = await getConnection()
+    const result = await pool.request().query(queries.getServicio)
+    res.json(result.recordset)
+  } catch (error) {
+    console.log(error)
+  }
+}

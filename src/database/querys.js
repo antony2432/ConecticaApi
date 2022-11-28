@@ -9,5 +9,8 @@ export const queries = {
   getClientByDni: 'SELECT * FROM CLIENTE Where Dni = @dni',
   getTecnicoName: 'SELECT [Nombres], [Estado] FROM TECNICO',
   getRouter: 'SELECT [Id], [Marca], [Estado] FROM ROUTER',
+  getServicio: 'SELECT [id], [estado], [servicio] FROM SERVICIOS',
+  getPlanes: 'SELECT [id], [plan], [estado] FROM PLANES',
+  getDistrito: 'SELECT [id], [nombre], [estado] FROM DISTRITOS',
   getUserWhereDis: 'SELECT [Usuario], [Dni] FROM CLIENTE Where Distrito = @distrito'
 }
