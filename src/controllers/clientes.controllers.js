@@ -17,6 +17,7 @@ export const createNewClient = async (req, res) => {
     if (dni == null || nombre == null || apellido == null || celular == null || usuario == null || distrito == null || direccion == null || tecnico == null || fecha_de_instalacion == null || plan == null || servicio == null || sn == null || router == null) {
       return res.status(400).json({ msg: 'Por favor envía los datos completos' });
     }
+    console.log(dni)
     if (referencia == "null") referencia = null
     if (cintillo == "null") cintillo = null
     if (cajaNap == "null") cajaNap = null
@@ -24,7 +25,7 @@ export const createNewClient = async (req, res) => {
     const pool = await getConnection()
     await pool
       .request()
-      .input("dni", sql.Int, dni)
+      .input("dni", sql.VarChar, dni)
       .input("nombre", sql.VarChar, nombre)
       .input("apellido", sql.VarChar, apellido)
       .input("celular", sql.Int, celular)
